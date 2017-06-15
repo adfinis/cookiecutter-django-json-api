@@ -22,3 +22,5 @@ ignore =
     P103
 
 jobs=auto
+exclude = migrations
+max-complexity = 10

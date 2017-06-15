@@ -1,6 +1,5 @@
 from rest_framework_json_api import views
-from . import serializers
-from . import models
+from . import models, serializers
 
 
 class UserViewSet(views.ModelViewSet):
