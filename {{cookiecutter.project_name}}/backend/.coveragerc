@@ -17,5 +17,7 @@ omit=
     */admin.py
     manage.py
     setup.py
+    {{cookiecutter.project_name}}/settings_*.py
+    {{cookiecutter.project_name}}/wsgi.py
 
 show_missing = True
