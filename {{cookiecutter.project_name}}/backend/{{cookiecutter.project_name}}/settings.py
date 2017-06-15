@@ -148,6 +148,7 @@ REST_FRAMEWORK = {
     )
 
 }
+
 JSON_API_FORMAT_KEYS = 'dasherize'
 JSON_API_FORMAT_TYPES = 'dasherize'
 JSON_API_PLURALIZE_TYPES = True
