@@ -1,5 +1,6 @@
 {
     "project_name": "Project name",
     "django_app": "Django app name (e.g. api)",
-    "description": "A short description of the project."
+    "description": "A short description of the project.",
+    "domain": "Domain project will be hosted (e.g. example.com)"
 }

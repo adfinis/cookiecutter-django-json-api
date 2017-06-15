@@ -1,0 +1,48 @@
+before_script:
+  - source /etc/profile
+  - echo "$RUNNER_SSH_PRIVATE_KEY" > /root/.ssh/id_rsa
+  - echo "$RUNNER_SSH_PUBLIC_KEY" > /root/.ssh/id_rsa.pub
+
+stages:
+  - test-backend
+  - deploy
+
+test:
+  stage: test-backend
+  script:
+    - pyenv local 3.5.2
+    - export PIP_CACHE_DIR='pip-cache'
+    - make -c backend install-dev
+    - export DJANGO_SETTINGS_MODULE={{cookiecutter.project_name}}.settings_ci
+    - ./manage.py migrate
+    - make test
+  services:
+    - postgres
+  cache:
+    paths:
+      - pip-cache
+
+deploy:
+    variables:
+        DEPLOY_HOST: $CI_COMMIT_REF_NAME.{{cookiecutter.domain}}
+        DEST_EXPORT: /tmp/{{cookiecutter.project_name}}
+    stage: deploy
+    environment:
+        name: $CI_COMMIT_REF_NAME
+        url: https://$CI_COMMIT_REF_NAME.{{cookiecutter.domain}}
+    script:
+        - mkdir -p $DEST_EXPORT
+        - git checkout-index --prefix=$DEST_EXPORT/ --all
+        - rsync --chown=www-data:www-data -avz --delete $DEST_EXPORT/ root@$DEPLOY_HOST:/usr/local/share/{{cookiecutter.project_name}}/backend/
+        - ssh www-data@$DEPLOY_HOST "/usr/local/share/{{cookiecutter.project_name}}/backend/deploy.sh $CI_COMMIT_REF_NAME"
+        - ssh root@$DEPLOY_HOST "systemctl restart {{cookiecutter.project_name}}.service"
+    only:
+        - production
+        - stage
+
+variables:
+  POSTGRES_DB: {{cookiecutter.project_name}}
+  POSTGRES_USER: {{cookiecutter.project_name}}
+  POSTGRES_PASSWORD: {{cookiecutter.project_name}}
+  LANG: C.UTF-8
+  LC_ALL: C.UTF-8
