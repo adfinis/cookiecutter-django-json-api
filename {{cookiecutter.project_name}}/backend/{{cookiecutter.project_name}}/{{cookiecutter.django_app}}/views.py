@@ -4,5 +4,8 @@ from . import models
 
 
 class UserViewSet(views.ModelViewSet):
-    queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return models.User.objects.filter(id=user.id)
