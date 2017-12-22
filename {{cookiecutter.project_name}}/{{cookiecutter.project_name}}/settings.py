@@ -163,6 +163,7 @@ JWT_AUTH = {
 def parse_admins(admins):
     """
     Parse env admins to django admins.
+
     Example of DJANGO_ADMINS environment variable:
     Test Example <test@example.com>,Test2 <test2@example.com>
     """

@@ -3,8 +3,10 @@ flake8
 flake8-blind-except
 flake8-debugger
 flake8-deprecated
-flake8-string-format
+flake8-docstrings
+flake8-isort
 flake8-mock
+flake8-string-format
 flake8-tuple
 ipdb
 isort
