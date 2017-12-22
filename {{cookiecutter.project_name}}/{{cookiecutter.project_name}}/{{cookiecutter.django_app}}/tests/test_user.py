@@ -1,14 +1,14 @@
 from django.core.urlresolvers import reverse
 from rest_framework import status
-from rest_framework.test import APIClient
 
 
-def test_user_detail(admin_user):
+def test_user_detail(admin_user, admin_client):
     url = reverse('user-detail', args=[admin_user.id])
 
-    client = APIClient()
-    client.login(username='admin', password='password')
-
-    response = client.get(url)
+    response = admin_client.get(url)
 
     assert response.status_code == status.HTTP_200_OK
+
+    json = response.json()
+    assert json['data']['id'] == str(admin_user.id)
+    assert 'password' not in json['data']['attributes']

@@ -18,4 +18,4 @@ start: ## Start the development server
 
 test: ## Test the project
 	@flake8
-	@pytest --cov --create-db
+	@pytest --no-cov-on-fail --cov --create-db
