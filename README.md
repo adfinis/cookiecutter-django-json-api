@@ -46,4 +46,9 @@ Code quality tools:
 
 
 Per default postgres is configured and a docker compose file provided. To support other database only
-settings.py needs to be changed.
+`DJANGO_DATABASE_ENGINE` environment variable needs to be changed.
+
+License
+-------
+
+Code released under the [BSD-3 Clause](LICENSE).
