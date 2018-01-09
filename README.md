@@ -12,7 +12,7 @@ Usage
 -----
 
 To use, simply run
-`cookiecutter git@git.adfinis-sygroup.ch:ad-sy/cookiecutter-django-json-api.git`
+`cookiecutter https://github.com/adfinis-sygroup/cookiecutter-django-json-api`
 
 Included in this template
 -------------------------
