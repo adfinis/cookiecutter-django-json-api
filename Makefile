@@ -7,4 +7,4 @@ test:
 	echo "ENV=ci" > ci_project/.env
 	echo "DJANGO_ADMINS=Test Example <test@example.com>,Test2 <test2@example.com>" >> ci_project/.env
 	echo "DJANGO_DATABASE_ENGINE=django.db.backends.sqlite3" >> ci_project/.env
-	cd ci_project; make install-dev test
+	make -C ci_project install-dev test
