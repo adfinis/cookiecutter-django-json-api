@@ -25,8 +25,6 @@ SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=default('uuuuuuuuuu'))
 DEBUG = env.bool('DJANGO_DEBUG', default=default(True, False))
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=default(['*']))
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -80,10 +78,10 @@ DATABASES = {
             'DJANGO_DATABASE_ENGINE',
             default='django.db.backends.postgresql_psycopg2'
         ),
-        'NAME': env.str('DJANGO_DATABASE_NAME', default='timed'),
-        'USER': env.str('DJANGO_DATABASE_USER', default='timed'),
+        'NAME': env.str('DJANGO_DATABASE_NAME', default='{{cookiecutter.project_name}}'),
+        'USER': env.str('DJANGO_DATABASE_USER', default='{{cookiecutter.project_name}}'),
         'PASSWORD': env.str(
-            'DJANGO_DATABASE_PASSWORD', default=default('timed')
+            'DJANGO_DATABASE_PASSWORD', default=default('{{cookiecutter.project_name}}')
         ),
         'HOST': env.str('DJANGO_DATABASE_HOST', default='localhost'),
         'PORT': env.str('DJANGO_DATABASE_PORT', default='')

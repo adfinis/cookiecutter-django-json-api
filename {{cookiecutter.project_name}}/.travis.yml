@@ -1,0 +1,25 @@
+language: python
+
+python:
+  - "3.6"
+
+services:
+  - postgresql
+
+cache:
+  - pip
+  - directories:
+    - .hypothesis
+
+install:
+  - echo "ENV=travis" > .env
+  - make install-dev
+
+before_script:
+  - psql -c "CREATE ROLE timed CREATEDB LOGIN PASSWORD '{{cookiecutter.project_name}}';" -U postgres
+  - psql -c "CREATE DATABASE {{cookiecutter.project_name}};" -U postgres
+
+script: make test
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)

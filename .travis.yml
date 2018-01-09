@@ -1,0 +1,20 @@
+language: python
+
+python:
+  - "3.5"
+  - "3.6"
+
+services:
+  - postgresql
+
+env:
+  - DJANGO_DATABASE_ENGINE=django.db.backends.postgresql_psycopg2
+
+cache:
+  - pip
+
+before_script:
+  - psql -c "CREATE ROLE ci_project CREATEDB LOGIN PASSWORD 'ci_project';" -U postgres
+  - psql -c "CREATE DATABASE ci_project;" -U postgres
+
+script: make test
