@@ -9,7 +9,7 @@ flake8-mock==0.3
 flake8-string-format==0.2.3
 flake8-tuple==0.2.13
 ipdb==0.11
-isort
+isort==4.3.4
 pytest
 pytest-cov
 pytest-django
