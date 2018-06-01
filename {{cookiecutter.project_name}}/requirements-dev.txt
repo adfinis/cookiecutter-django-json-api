@@ -8,7 +8,7 @@ flake8-isort==2.5
 flake8-mock==0.3
 flake8-string-format==0.2.3
 flake8-tuple==0.2.13
-ipdb
+ipdb==0.11
 isort
 pytest
 pytest-cov
