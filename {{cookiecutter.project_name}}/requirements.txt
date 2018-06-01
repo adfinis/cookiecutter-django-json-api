@@ -1,6 +1,6 @@
 Django==2.0.5
 django-environ==0.4.4
-django-filter==1.0.4
+django-filter==1.1.0
 djangorestframework>=3.6,<3.7
 djangorestframework-jsonapi==2.2.0
 djangorestframework-jwt==1.10.0
