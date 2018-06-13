@@ -30,12 +30,9 @@ Django specific:
 Code quality tools:
 
 - [Flake8](http://flake8.pycqa.org/en/latest/) - includes .flake8 with some defaults
-- [Flake8 Blind Except Plugin](https://github.com/elijahandrews/flake8-blind-except)
 - [Flake8 Debugger Plugin](https://github.com/jbkahn/flake8-debugger)
-- [Flake8 Deprecations Plugin](https://github.com/gforcada/flake8-deprecated)
 - [Flake8 DocStrings Plugin](https://gitlab.com/pycqa/flake8-docstrings)
 - [Flake8 isort plugin](https://github.com/gforcada/flake8-isort)
-- [Flake8 Mock plugin](https://github.com/aleGpereira/flake8-mock)
 - [Flake8 String Format Plugin](https://github.com/xZise/flake8-string-format)
 - [Flake8 Tuple](https://github.com/ar4s/flake8_tuple)
 - [IPython debugger](https://github.com/gotcha/ipdb)
