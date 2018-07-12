@@ -121,7 +121,7 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER':
         'rest_framework_json_api.exceptions.exception_handler',
     'DEFAULT_PAGINATION_CLASS':
-        'rest_framework_json_api.pagination.PageNumberPagination',
+        'rest_framework_json_api.pagination.JsonApiPageNumberPagination',
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework_json_api.parsers.JSONParser',
         'rest_framework.parsers.JSONParser',
@@ -146,6 +146,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ),
+    'ORDERING_PARAM': 'sort',
     'TEST_REQUEST_RENDERER_CLASSES': (
         'rest_framework_json_api.renderers.JSONRenderer',
         'rest_framework.renderers.JSONRenderer',
@@ -153,7 +154,7 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT': 'vnd.api+json'
 }
 
-JSON_API_FORMAT_KEYS = 'dasherize'
+JSON_API_FORMAT_FIELD_NAMES = 'dasherize'
 JSON_API_FORMAT_TYPES = 'dasherize'
 JSON_API_PLURALIZE_TYPES = True
 
