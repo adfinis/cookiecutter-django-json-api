@@ -14,7 +14,6 @@ exclude_lines =
 omit=
     */migrations/*
     */apps.py
-    */admin.py
     manage.py
     setup.py
     {{cookiecutter.project_name}}/settings_*.py
