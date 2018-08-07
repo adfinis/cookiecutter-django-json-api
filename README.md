@@ -7,6 +7,8 @@ Requirements
 ------------
 - Latest [Python & virtualenv](https://www.python.org/downloads/release)
 - Latest [CookieCutter](http://cookiecutter.readthedocs.org/en/latest/)
+- Latest [Docker](https://docs.docker.com/)
+- Latest [Docker Compose](https://docs.docker.com/compose/)
 
 Usage
 -----

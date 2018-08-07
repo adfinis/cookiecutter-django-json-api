@@ -1,6 +1,5 @@
 stages:
   - test
-  - deploy
 
 test:
   stage: test
@@ -39,23 +38,3 @@ test:
 #     - pyup --provider gitlab --repo=$CI_PROJECT_ID --user-token=$USER_TOKEN@https://gitlab.com
 #   only:
 #     - master
-
-deploy:
-  variables:
-    DEPLOY_HOST: root@$CI_COMMIT_REF_NAME.{{cookiecutter.domain}}
-    DEST_EXPORT: /tmp/{{cookiecutter.project_name}}
-  stage: deploy
-  environment:
-    name: $CI_COMMIT_REF_NAME
-    url: https://$CI_COMMIT_REF_NAME.{{cookiecutter.domain}}
-  script:
-    - echo "$RUNNER_SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-    - echo "$RUNNER_SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
-    - mkdir -p $DEST_EXPORT
-    - git checkout-index --prefix=$DEST_EXPORT/ --all
-    - rsync --chown=www-data:www-data -avz --delete $DEST_EXPORT/ $DEPLOY_HOST:/usr/local/share/{{cookiecutter.project_name}}/backend/
-    - ssh www-data@$DEPLOY_HOST "/usr/local/share/{{cookiecutter.project_name}}/backend/deploy.sh $CI_COMMIT_REF_NAME"
-    - ssh $DEPLOY_HOST "systemctl restart {{cookiecutter.project_name}}.service"
-  only:
-    - production
-    - stage
