@@ -5,3 +5,4 @@ djangorestframework==3.8.2
 djangorestframework-jsonapi==2.5.0
 djangorestframework-jwt==1.11.0
 psycopg2-binary==2.7.5
+uwsgi==2.0.17.1

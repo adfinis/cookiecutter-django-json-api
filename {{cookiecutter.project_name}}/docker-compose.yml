@@ -7,3 +7,14 @@ services:
     environment:
       - POSTGRES_USER={{cookiecutter.project_name}}
       - POSTGRES_PASSWORD={{cookiecutter.project_name}}
+  backend:
+    build: .
+    ports:
+      - '8000:80'
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DJANGO_DATABASE_HOST=db
+      - ENV=docker
