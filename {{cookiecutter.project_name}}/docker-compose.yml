@@ -16,5 +16,5 @@ services:
     depends_on:
       - db
     environment:
-      - DJANGO_DATABASE_HOST=db
+      - DATABASE_HOST=db
       - ENV=docker
