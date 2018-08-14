@@ -14,7 +14,7 @@ install:
   - make install-dev
 
 before_script:
-  - psql -c "CREATE ROLE timed CREATEDB LOGIN PASSWORD '{{cookiecutter.project_name}}';" -U postgres
+  - psql -c "CREATE ROLE {{cookiecutter.project_name}} CREATEDB LOGIN PASSWORD '{{cookiecutter.project_name}}';" -U postgres
   - psql -c "CREATE DATABASE {{cookiecutter.project_name}};" -U postgres
 
 script: make test
