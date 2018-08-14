@@ -9,7 +9,7 @@ test:
     POSTGRES_DB: {{cookiecutter.project_name}}
     POSTGRES_USER: {{cookiecutter.project_name}}
     POSTGRES_PASSWORD: {{cookiecutter.project_name}}
-    DJANGO_DATABASE_HOST: postgres
+    DATABASE_HOST: postgres
   script:
     - echo "ENV=ci" > .env
     - make install-dev

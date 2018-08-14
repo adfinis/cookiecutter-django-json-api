@@ -45,7 +45,7 @@ Code quality tools:
 
 
 Per default postgres is configured and a docker compose file provided. To support other database only
-`DJANGO_DATABASE_ENGINE` environment variable needs to be changed.
+`DATABASE_ENGINE` environment variable needs to be changed.
 
 License
 -------
