@@ -7,7 +7,7 @@ import environ
 env = environ.Env()
 django_root = environ.Path(__file__) - 2
 
-ENV_FILE = env.str('DJANGO_ENV_FILE', default=django_root('.env'))
+ENV_FILE = env.str('ENV_FILE', default=django_root('.env'))
 if os.path.exists(ENV_FILE):
     environ.Env.read_env(ENV_FILE)
 
@@ -21,9 +21,9 @@ def default(default_dev=env.NOTSET, default_prod=env.NOTSET):
     return default_prod if ENV == 'production' else default_dev
 
 
-SECRET_KEY = env.str('DJANGO_SECRET_KEY', default=default('uuuuuuuuuu'))
-DEBUG = env.bool('DJANGO_DEBUG', default=default(True, False))
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=default(['*']))
+SECRET_KEY = env.str('SECRET_KEY', default=default('uuuuuuuuuu'))
+DEBUG = env.bool('DEBUG', default=default(True, False))
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=default(['*']))
 
 
 # Application definition
@@ -51,16 +51,16 @@ WSGI_APPLICATION = '{{cookiecutter.project_name}}.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': env.str(
-            'DJANGO_DATABASE_ENGINE',
+            'DATABASE_ENGINE',
             default='django.db.backends.postgresql_psycopg2'
         ),
-        'NAME': env.str('DJANGO_DATABASE_NAME', default='{{cookiecutter.project_name}}'),
-        'USER': env.str('DJANGO_DATABASE_USER', default='{{cookiecutter.project_name}}'),
+        'NAME': env.str('DATABASE_NAME', default='{{cookiecutter.project_name}}'),
+        'USER': env.str('DATABASE_USER', default='{{cookiecutter.project_name}}'),
         'PASSWORD': env.str(
-            'DJANGO_DATABASE_PASSWORD', default=default('{{cookiecutter.project_name}}')
+            'DATABASE_PASSWORD', default=default('{{cookiecutter.project_name}}')
         ),
-        'HOST': env.str('DJANGO_DATABASE_HOST', default='localhost'),
-        'PORT': env.str('DJANGO_DATABASE_PORT', default='')
+        'HOST': env.str('DATABASE_HOST', default='localhost'),
+        'PORT': env.str('DATABASE_PORT', default='')
     }
 }
 
@@ -78,8 +78,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = env.str('DJANGO_LANGUAGE_CODE', 'en-us')
-TIME_ZONE = env.str('DJANGO_TIME_ZONE', 'UTC')
+LANGUAGE_CODE = env.str('LANGUAGE_CODE', 'en-us')
+TIME_ZONE = env.str('TIME_ZONE', 'UTC')
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
@@ -136,7 +136,7 @@ def parse_admins(admins):
     """
     Parse env admins to django admins.
 
-    Example of DJANGO_ADMINS environment variable:
+    Example of ADMINS environment variable:
     Test Example <test@example.com>,Test2 <test2@example.com>
     """
     result = []
@@ -144,10 +144,10 @@ def parse_admins(admins):
         match = re.search('(.+) \<(.+@.+)\>', admin)
         if not match:  # pragma: no cover
             raise environ.ImproperlyConfigured(
-                'In DJANGO_ADMINS admin "{0}" is not in correct '
+                'In ADMINS admin "{0}" is not in correct '
                 '"Firstname Lastname <email@example.com>"'.format(admin))
         result.append((match.group(1), match.group(2)))
     return result
 
 
-ADMINS = parse_admins(env.list('DJANGO_ADMINS', default=[]))
+ADMINS = parse_admins(env.list('ADMINS', default=[]))
