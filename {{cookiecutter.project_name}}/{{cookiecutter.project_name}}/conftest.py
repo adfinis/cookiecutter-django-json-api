@@ -5,7 +5,7 @@ from factory.base import FactoryMetaClass
 from pytest_factoryboy import register
 from rest_framework_jwt import test
 
-from .{{cookiecutter.django_app}} import factories as user_factories
+from .{{cookiecutter.django_app}} import factories as {{cookiecutter.django_app}}_factories
 
 
 def register_module(module):
