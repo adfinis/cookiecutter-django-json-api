@@ -17,7 +17,7 @@ def register_module(module):
             register(obj, base_name)
 
 
-register_module(user_factories)
+register_module({{cookiecutter.django_app}}_factories)
 
 
 @pytest.fixture
