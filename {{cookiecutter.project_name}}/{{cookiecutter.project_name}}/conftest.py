@@ -1,11 +1,10 @@
+import importlib
 import inspect
 
 import pytest
 from factory.base import FactoryMetaClass
 from pytest_factoryboy import register
 from rest_framework_jwt import test
-
-from .{{cookiecutter.django_app}} import factories as {{cookiecutter.django_app}}_factories
 
 
 def register_module(module):
@@ -17,7 +16,11 @@ def register_module(module):
             register(obj, base_name)
 
 
-register_module({{cookiecutter.django_app}}_factories)
+register_module(
+    importlib.import_module(
+        ".{{cookiecutter.django_app}}.factories", "{{cookiecutter.project_name}}"
+    )
+)
 
 
 @pytest.fixture
@@ -27,5 +30,5 @@ def client():
 
 @pytest.fixture
 def admin_client(db, admin_user, client):
-    client.login(username=admin_user.username, password='password')
+    client.login(username=admin_user.username, password="password")
     return client

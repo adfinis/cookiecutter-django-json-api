@@ -14,5 +14,6 @@ start: ## Start the development server
 	@docker-compose up -d
 
 test: ## Test the project
+	@black --check .
 	@flake8
 	@pytest --no-cov-on-fail --cov --create-db
