@@ -8,14 +8,21 @@ ignore =
     E501,
     # Line break occurred before a binary operator (this is not PEP8 compatible)
     W503,
-    # do not enforce existence of docstrings
+    # Missing docstring in public module
     D100,
+    # Missing docstring in public class
     D101,
+    # Missing docstring in public method
     D102,
+    # Missing docstring in public function
     D103,
+    # Missing docstring in public package
     D104,
+    # Missing docstring in magic method
     D105,
+    # Missing docstring in public package
     D106,
+    # Missing docstring in __init__
     D107,
     # needed because of https://github.com/ambv/black/issues/144
     D202,
