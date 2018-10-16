@@ -1,11 +1,16 @@
 Django JSON API CookieCutter template
 =====================================
 
+[![Build Status](https://travis-ci.org/adfinis-sygroup/cookiecutter-django-json-api.svg?branch=master)](https://travis-ci.org/adfinis-sygroup/cookiecutter-django-json-api)
+[![Pyup](https://pyup.io/repos/github/adfinis-sygroup/cookiecutter-django-json-api/shield.svg)](https://pyup.io/account/repos/github/adfinis-sygroup/cookiecutter-django-json-api/)
+[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/adfinis-sygroup/cookiecutter-django-json-api)
+[![License: MIT](https://img.shields.io/badge/License-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
 This cookie cutter provides a Django project with JSON API support. It combines Adfinis best practices in terms of setup, structure and configuration.
 
 Requirements
 ------------
-- Latest [Python & virtualenv](https://www.python.org/downloads/release)
+- Python 3.6+
 - Latest [CookieCutter](http://cookiecutter.readthedocs.org/en/latest/)
 - Latest [Docker](https://docs.docker.com/)
 - Latest [Docker Compose](https://docs.docker.com/compose/)
@@ -29,8 +34,9 @@ Django specific:
 - [Django Environ](https://github.com/joke2k/django-environ)
 
 
-Code quality tools:
+Code quality and formatting tools:
 
+- [Black](https://github.com/ambv/black)
 - [Flake8](http://flake8.pycqa.org/en/latest/) - includes .flake8 with some defaults
 - [Flake8 Debugger Plugin](https://github.com/jbkahn/flake8-debugger)
 - [Flake8 DocStrings Plugin](https://gitlab.com/pycqa/flake8-docstrings)
