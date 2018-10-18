@@ -1,7 +1,7 @@
 django==1.11.16 # pyup: >=1.11,<1.12
 django-environ==0.4.5
 django-filter==2.0.0
-djangorestframework==3.8.2
+djangorestframework==3.9.0
 djangorestframework-jsonapi==2.6.0
 djangorestframework-jwt==1.11.0
 psycopg2-binary==2.7.5
