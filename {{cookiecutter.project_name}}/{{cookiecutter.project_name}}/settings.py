@@ -60,6 +60,7 @@ DATABASES = {
         ),
         "HOST": env.str("DATABASE_HOST", default="localhost"),
         "PORT": env.str("DATABASE_PORT", default=""),
+        "OPTIONS": env.dict("DATABASE_OPTIONS", default={"sslmode": "prefer"}),
     }
 }
 
