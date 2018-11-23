@@ -6,7 +6,7 @@ ENV DJANGO_SETTINGS_MODULE {{cookiecutter.project_name}}.settings
 ENV UWSGI_INI /app/uwsgi.ini
 
 COPY requirements.txt /app
-RUN pip install --upgrade --no-cache-dir --requirements requirements.txt
+RUN pip install --upgrade --no-cache-dir --requirement requirements.txt
 
 COPY . /app
 
