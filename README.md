@@ -12,8 +12,8 @@ Requirements
 ------------
 - Python 3.6+
 - Latest [CookieCutter](http://cookiecutter.readthedocs.org/en/latest/)
-- Latest [Docker](https://docs.docker.com/)
-- Latest [Docker Compose](https://docs.docker.com/compose/)
+- [Docker](https://docs.docker.com/) 1.13.0+
+- [Docker Compose](https://docs.docker.com/compose/) 1.21.0+
 
 Usage
 -----

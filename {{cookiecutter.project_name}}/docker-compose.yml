@@ -1,20 +1,25 @@
-version: '2'
+version: "3"
 services:
   db:
     image: postgres
-    ports:
-      - '5432:5432'
     environment:
       - POSTGRES_USER={{cookiecutter.project_name}}
-      - POSTGRES_PASSWORD={{cookiecutter.project_name}}
+      # following option is a must to configure on production system:
+      # https://hub.docker.com/_/postgres
+      # - POSTGRES_PASSWORD=
   backend:
-    build: .
+    image: {{cookiecutter.project_name}}/{{cookiecutter.django_app}}
     ports:
-      - '8000:80'
-    volumes:
-      - .:/app
+      - "8000:8000"
     depends_on:
       - db
     environment:
       - DATABASE_HOST=db
-      - ENV=docker
+      # following options are a must to configure on production system:
+      # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-SECRET_KEY
+      # - SECRET_KEY=
+      # https://docs.djangoproject.com/en/2.1/ref/settings/#allowed-hosts
+      # - ALLOWED_HOSTS=
+      # https://docs.djangoproject.com/en/2.1/ref/settings/#password
+      # same as postgres password above
+      # - DATABASE_PASSWORD=
