@@ -2,7 +2,7 @@ FROM python:3.6
 
 WORKDIR /app
 
-RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -P /usr/local/bin \
+RUN wget -q https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -P /usr/local/bin \
   && chmod +x /usr/local/bin/wait-for-it.sh \
   && mkdir -p /app \
 && groupadd -r {{cookiecutter.project_name}} -g 901 && useradd -u 901 -r -g 901 {{cookiecutter.project_name}}
