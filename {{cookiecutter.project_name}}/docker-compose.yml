@@ -1,12 +1,14 @@
 version: "3"
 services:
   db:
-    image: postgres
+    image: postgres:alpine
     environment:
       - POSTGRES_USER={{cookiecutter.project_name}}
       # following option is a must to configure on production system:
       # https://hub.docker.com/_/postgres
       # - POSTGRES_PASSWORD=
+    volumes:
+      - dbdata:/var/lib/postgresql/data
   backend:
     image: {{cookiecutter.project_name}}/{{cookiecutter.django_app}}
     ports:
@@ -23,3 +25,6 @@ services:
       # https://docs.djangoproject.com/en/2.1/ref/settings/#password
       # same as postgres password above
       # - DATABASE_PASSWORD=
+
+volumes:
+  dbdata:
