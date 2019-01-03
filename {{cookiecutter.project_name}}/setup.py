@@ -5,9 +5,8 @@ from setuptools import find_packages, setup
 setup(
     name="{{cookiecutter.project_name}}",
     version="0.0.0",
-    author="Adfinis SyGroup AG",
-    author_email="https://adfinis-sygroup.ch/",
+    author="{{cookiecutter.organization_slug}}",
     description="{{cookiecutter.description}}",
-    url="https://adfinis-sygroup.ch/",
+    url="{{cookiecutter.url}}",
     packages=find_packages(),
 )
