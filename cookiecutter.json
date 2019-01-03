@@ -2,5 +2,6 @@
     "project_name": "Project name",
     "django_app": "Django app name (e.g. api)",
     "description": "A short description of the project.",
-    "domain": "Domain project will be hosted (e.g. example.com)"
+    "url": "Url project will be hosted (e.g. example.com)",
+    "organization_slug": "Organization slug (e.g. used on GitHub)"
 }

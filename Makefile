@@ -11,7 +11,7 @@ clean:
 
 test: clean
 	pip install -U cookiecutter black
-	cookiecutter --no-input . project_name=ci_project django_app=api
+	cookiecutter --no-input . project_name=ci_project django_app=api organization_slug=ci-project
 	echo "UID=$(USER_ID)" > ci_project/.env
 	# format build ci_project as line lengths have changed due to replacement
 	black ci_project

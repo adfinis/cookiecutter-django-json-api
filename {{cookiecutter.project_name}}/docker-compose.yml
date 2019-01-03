@@ -10,7 +10,7 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
   backend:
-    image: {{cookiecutter.project_name}}/{{cookiecutter.django_app}}
+    image: {{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}
     ports:
       - "8000:8000"
     depends_on:
