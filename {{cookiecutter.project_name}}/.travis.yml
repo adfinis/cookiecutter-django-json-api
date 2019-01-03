@@ -16,6 +16,7 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
+  # Workaround for https://github.com/travis-ci/travis-ci/issues/4842
   # Let's stop postgresql
   - sudo service postgresql stop
   # wait for postgresql to shutdown
