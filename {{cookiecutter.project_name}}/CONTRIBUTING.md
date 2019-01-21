@@ -11,7 +11,7 @@ environment. Before writing any code, best discuss your proposed change in a Git
 To work on {{cookiecutter.project_name}} you first need to clone
 
 ```bash
-git clone https://github.com/adfinis-sygroup/{{cookiecutter.project_name}}.git
+git clone https://github.com/{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}.git
 cd {{cookiecutter.project_name}}
 ```
 
