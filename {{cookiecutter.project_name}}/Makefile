@@ -7,5 +7,8 @@ help:
 start: ## Start the development server
 	@docker-compose up -d --build
 
-test: ## Test the project
+test: ## Test the backend
 	@docker-compose exec backend sh -c "black --check . && flake8 && pytest --no-cov-on-fail --cov --create-db"
+
+shell: ## Shell into the backend
+	@docker-compose exec backend bash
