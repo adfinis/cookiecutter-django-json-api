@@ -1,4 +1,4 @@
-.PHONY: help install install-dev start test
+.PHONY: help start test shell
 .DEFAULT_GOAL := help
 
 help:
