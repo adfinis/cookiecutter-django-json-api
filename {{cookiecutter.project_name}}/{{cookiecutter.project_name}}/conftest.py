@@ -4,7 +4,7 @@ import inspect
 import pytest
 from factory.base import FactoryMetaClass
 from pytest_factoryboy import register
-from rest_framework_jwt import test
+from rest_framework.test import APIClient
 
 
 def register_module(module):
@@ -24,11 +24,7 @@ register_module(
 
 
 @pytest.fixture
-def client():
-    return test.APIJWTClient()
-
-
-@pytest.fixture
-def admin_client(db, admin_user, client):
-    client.login(username=admin_user.username, password="password")
+def admin_client(db, admin_user):
+    client = APIClient()
+    client.force_authenticate(user=admin_user)
     return client
