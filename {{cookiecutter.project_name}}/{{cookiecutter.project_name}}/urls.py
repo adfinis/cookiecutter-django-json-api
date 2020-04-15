@@ -1,11 +1,12 @@
-from django.conf.urls import include, url
-from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+from django.conf.urls import include
+from django.urls import path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
-    url(r"^api-token-auth/", obtain_jwt_token),
-    url(r"^api-token-refresh/", refresh_jwt_token),
-    url(
-        r"^api/v1/",
+    path("api-token-auth/", TokenObtainPairView.as_view(), name="login"),
+    path("api-token-refresh/", TokenRefreshView.as_view(), name="refresh"),
+    path(
+        "api/v1/",
         include("{{cookiecutter.project_name}}.{{cookiecutter.django_app}}.urls"),
     ),
 ]
