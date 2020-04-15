@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.8
 
 WORKDIR /app
 
@@ -9,6 +9,11 @@ RUN wget -q https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-
 # all project specific folders need to be accessible by newly created user but also for unknown users (when UID is set manually). Such users are in group root.
 && chown -R {{cookiecutter.project_name}}:root /home/{{cookiecutter.project_name}} \
 && chmod -R 770 /home/{{cookiecutter.project_name}}
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  # needed for psycopg2
+  libpq-dev
 
 # needs to be set for users with manually set UID
 ENV HOME=/home/{{cookiecutter.project_name}}
