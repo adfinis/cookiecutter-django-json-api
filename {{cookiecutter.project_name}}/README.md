@@ -42,4 +42,4 @@ A list of configuration options which you need
 
 ## Contributing
 
-Look at our [contributing guidelines](CONTRIBUTION.md) to start with your first contribution.
+Look at our [contributing guidelines](CONTRIBUTING.md) to start with your first contribution.
