@@ -18,6 +18,5 @@ test: clean
 	# not generated code needs to be checked for correct formatting as well
 	black --check .
 	make -C ci_project start
-	# don't check black in the generated project because stuff line line length
-	# depends on the application name (eg. ci_project)
-	docker-compose --file ci_project/docker-compose.yml exec backend sh -c "flake8 && pytest --no-cov-on-fail --cov --create-db"
+	# don't check black in the generated project
+	docker-compose --file=ci_project/docker-compose.yml exec -T backend /bin/sh -c "flake8 && pytest --no-cov-on-fail --cov --create-db"
