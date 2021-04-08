@@ -4,3 +4,15 @@ update_configs:
   - package_manager: "python"
     directory: "{{cookiecutter.project_name}}"
     update_schedule: "daily"
+    automerge_updates:
+      - match:
+          dependency_type: "development"
+    commit_message:
+      prefix: "chore"
+      include_scope: true
+  - package_manager: "docker"
+    directory: "{{cookiecutter.project_name}}"
+    update_schedule: "daily"
+    commit_message:
+      prefix: "chore"
+      include_scope: true
