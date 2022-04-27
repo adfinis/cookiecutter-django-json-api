@@ -1,7 +1,7 @@
 -r requirements.txt
 black==20.8b1
 factory-boy==3.2.0
-flake8==3.9.0
+flake8==4.0.1
 flake8-blind-except==0.2.0
 flake8-debugger==3.2.1
 flake8-docstrings==1.6.0
