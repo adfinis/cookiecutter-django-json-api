@@ -10,7 +10,8 @@ clean:
 	fi
 
 test: clean
-	pip install -U cookiecutter black
+	# install click as black requires newer version (>=8.0.0)
+	pip install -U cookiecutter black click
 	cookiecutter --no-input . project_name=ci_project django_app=api organization_slug=ci-project
 	echo "UID=$(USER_ID)" > ci_project/.env
 	# format build ci_project as line lengths have changed due to replacement
