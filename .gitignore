@@ -65,6 +65,9 @@ target/
 # Pyenv
 .python-version
 
+# Dotenv
+.env
+
 # Editor swap files
 *.swp
 

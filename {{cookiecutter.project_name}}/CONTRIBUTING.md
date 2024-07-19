@@ -25,7 +25,7 @@ open an development environment.
 # only needs to be run once
 echo UID=$UID > .env
 # open shell
-docker-compose run --rm {{cookiecutter.project_name}} bash
+docker compose run --rm {{cookiecutter.project_name}} bash
 ```
 
 ### Testing
@@ -36,9 +36,9 @@ etc.
 
 ```bash
 # linting
-flake8
+ruff check .
 # format code
-black .
+ruff format .
 # running tests
 pytest
 # create migrations
@@ -55,17 +55,14 @@ In case you're adding new requirements you simply need to build the docker conta
 again for those to be installed and re-open shell.
 
 ```bash
-docker-compose build --pull
+docker compose build --pull
 ```
 
 ### Setup pre commit
 
 Pre commit hooks is an additional option instead of executing checks in your editor of choice.
 
-First create a virtualenv with the tool of your choice before running below commands:
-
 ```bash
-pip install pre-commit
-pip install -r requiements-dev.txt -U
-pre-commit install
+pre-commit install --hook=pre-commit
+pre-commit install --hook=commit-msg
 ```

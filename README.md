@@ -1,25 +1,24 @@
 Django JSON API CookieCutter template
 =====================================
 
-[![Build Status](https://travis-ci.org/adfinis-sygroup/cookiecutter-django-json-api.svg?branch=master)](https://travis-ci.org/adfinis-sygroup/cookiecutter-django-json-api)
-[![Pyup](https://pyup.io/repos/github/adfinis-sygroup/cookiecutter-django-json-api/shield.svg)](https://pyup.io/account/repos/github/adfinis-sygroup/cookiecutter-django-json-api/)
-[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/adfinis-sygroup/cookiecutter-django-json-api)
+[![Build Status](https://github.com/adfinis/cookiecutter-django-json-api/workflows/Tests/badge.svg)](https://github.com/adfinis/cookiecutter-django-json-api/actions?query=workflow%3ATests)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/adfinis/cookiecutter-django-json-api/blob/master/{{cookiecutter.project_name}}/pyproject.toml#L155)
+[![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://docs.astral.sh/ruff/)
 [![License: MIT](https://img.shields.io/badge/License-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
 This cookie cutter provides a Django project with JSON API support. It combines Adfinis best practices in terms of setup, structure and configuration.
 
 Requirements
 ------------
-- Python 3.6+
+- Python ^3.9
 - Latest [CookieCutter](http://cookiecutter.readthedocs.org/en/latest/)
-- [Docker](https://docs.docker.com/) 1.13.0+
-- [Docker Compose](https://docs.docker.com/compose/) 1.21.0+
+- [Docker](https://docs.docker.com/)
 
 Usage
 -----
 
 To use, simply run
-`cookiecutter https://github.com/adfinis-sygroup/cookiecutter-django-json-api`
+`cookiecutter https://github.com/adfinis/cookiecutter-django-json-api`
 
 Included in this template
 -------------------------
@@ -36,15 +35,7 @@ Django specific:
 
 Code quality and formatting tools:
 
-- [Black](https://github.com/ambv/black)
-- [Flake8](http://flake8.pycqa.org/en/latest/) - includes .flake8 with some defaults
-- [Flake8 Debugger Plugin](https://github.com/jbkahn/flake8-debugger)
-- [Flake8 DocStrings Plugin](https://gitlab.com/pycqa/flake8-docstrings)
-- [Flake8 isort plugin](https://github.com/gforcada/flake8-isort)
-- [Flake8 String Format Plugin](https://github.com/xZise/flake8-string-format)
-- [Flake8 Tuple](https://github.com/ar4s/flake8_tuple)
-- [IPython debugger](https://github.com/gotcha/ipdb)
-- [isort](https://pypi.python.org/pypi/isort)
+- [ruff](https://docs.astral.sh/ruff/)
 - [Pytest](https://docs.pytest.org/en/latest/)
 - [Pytest Coverage Plugin](https://github.com/pytest-dev/pytest-cov) - coverage set to 100%
 - [Pytest Django Plugin](https://pytest-django.readthedocs.io/en/latest/)

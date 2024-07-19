@@ -8,7 +8,7 @@ env = environ.Env()
 django_root = environ.Path(__file__) - 2
 
 ENV_FILE = env.str("ENV_FILE", default=django_root(".env"))
-if os.path.exists(ENV_FILE):
+if os.path.exists(ENV_FILE):  # noqa: PTH110
     environ.Env.read_env(ENV_FILE)
 
 # per default production is enabled for security reasons
@@ -83,7 +83,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = env.str("LANGUAGE_CODE", "en-us")
 TIME_ZONE = env.str("TIME_ZONE", "UTC")
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = "{{cookiecutter.django_app}}.User"
@@ -141,10 +140,9 @@ def parse_admins(admins):
     for admin in admins:
         match = re.search(r"(.+) \<(.+@.+)\>", admin)
         if not match:  # pragma: no cover
-            raise environ.ImproperlyConfigured(
-                'In ADMINS admin "{0}" is not in correct '
-                '"Firstname Lastname <email@example.com>"'.format(admin)
-            )
+            msg = (f'In ADMINS admin "{admin}" is not in correct '
+                   '"Firstname Lastname <email@example.com>" format')
+            raise environ.ImproperlyConfigured(msg)
         result.append((match.group(1), match.group(2)))
     return result
 

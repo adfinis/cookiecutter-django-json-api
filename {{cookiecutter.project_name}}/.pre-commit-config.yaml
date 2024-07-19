@@ -1,18 +1,21 @@
 repos:
   - repo: local
     hooks:
-      - id: black
-        name: black
+      - id: ruff-format
+        stages: [commit]
+        name: ruff-format
         language: system
-        entry: black
+        entry: ruff format .
         types: [python]
-      - id: isort
-        name: isort
+      - id: ruff-check
+        stages: [commit]
+        name: ruff-check
         language: system
-        entry: isort -y
+        entry: ruff check . --show-source --fix
         types: [python]
-      - id: flake8
-        name: flake8
+      - id: gitlint
+        stages: [commit-msg]
+        name: gitlint
+        description: Validate commit lint
+        entry: gitlint --msg-filename
         language: system
-        entry: flake8
-        types: [python]
