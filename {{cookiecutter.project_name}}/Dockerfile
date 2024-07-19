@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.12
 
 # needs to be set for users with manually set UID
 ENV HOME=/home/{{cookiecutter.project_name}}
