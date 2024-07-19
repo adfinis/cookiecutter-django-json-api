@@ -1,8 +1,8 @@
 # {{cookiecutter.project_name}}
 
-[![Build Status](https://travis-ci.com/{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}.svg?branch=master)](https://travis-ci.com/{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}})
-[![Pyup](https://pyup.io/repos/github/{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}/shield.svg)](https://pyup.io/account/repos/github/{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}/)
-[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)]({{cookiecutter.url}})
+[![Build Status]({{cookiecutter.url}}/workflows/Tests/badge.svg)]({{cookiecutter.url}}/actions?query=workflow%3ATests)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)]({{cookiecutter.url}}/blob/main/{{cookiecutter.project_name}}/pyproject.toml#L115)
+[![Ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://docs.astral.sh/ruff/)
 
 {{cookiecutter.description}}
 
@@ -23,7 +23,7 @@ You can now access the api at [http://localhost:8000/api/v1/](http://localhost:8
 
 ### Configuration
 
-Document Merge Service is a [12factor app](https://12factor.net/) which means that configuration is stored in environment variables.
+{{cookiecutter.project_name}} is a [12factor app](https://12factor.net/) which means that configuration is stored in environment variables.
 Different environment variable types are explained at [django-environ](https://github.com/joke2k/django-environ#supported-types).
 
 #### Common
