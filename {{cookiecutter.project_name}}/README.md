@@ -12,12 +12,11 @@
 
 **Requirements**
 * docker
-* docker-compose
 
 After installing and configuring those, download [docker-compose.yml](https://raw.githubusercontent.com/{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}/master/docker-compose.yml) and run the following command:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 You can now access the api at [http://localhost:8000/api/v1/](http://localhost:8000/api/v1/).

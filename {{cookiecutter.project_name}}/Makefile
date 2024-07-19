@@ -6,12 +6,12 @@ help:
 
 .PHONY: start
 start: ## Start the development server
-	@docker-compose up -d --build
+	@docker compose up -d --build
 
 .PHONY: test
 test: ## Test the backend
-	@docker-compose exec backend sh -c "black --check . && flake8 && pytest --no-cov-on-fail --cov --create-db"
+	@docker compose exec backend sh -c "black --check . && flake8 && pytest --no-cov-on-fail --cov --create-db"
 
 .PHONY: shell
 shell: ## Shell into the backend
-	@docker-compose exec backend bash
+	@docker compose exec backend bash

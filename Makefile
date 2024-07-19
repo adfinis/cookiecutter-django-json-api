@@ -14,7 +14,7 @@ uid:
 .PHONY: clean
 clean: ## stop project and remove local build
 	@if [ -d "ci_project" ]; then \
-	  cd ci_project; docker-compose down -v; cd ..; \
+	  cd ci_project; docker compose down -v; cd ..; \
 	  rm -rf ci_project; \
 	fi
 
