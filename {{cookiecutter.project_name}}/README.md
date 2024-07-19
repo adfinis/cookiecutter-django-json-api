@@ -16,6 +16,8 @@
 After installing and configuring those, download [docker-compose.yml](https://raw.githubusercontent.com/{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}/master/docker-compose.yml) and run the following command:
 
 ```bash
+docker compose build --pull
+docker compose run --rm backend poetry run ./manage.py makemigrations
 docker compose up -d
 ```
 
