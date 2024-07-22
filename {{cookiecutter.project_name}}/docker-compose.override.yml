@@ -1,5 +1,3 @@
-version: "3"
-
 services:
 
   db:
@@ -24,3 +22,5 @@ services:
       ]
     environment:
       - ENV=dev
+      #  - OIDC_VERIFY_SSL=False
+      - OIDC_OP_USER_ENDPOINT=https://{{cookiecutter.project_name}}.local/auth/realms/{{cookiecutter.project_name}}/protocol/openid-connect/userinfo

@@ -16,6 +16,7 @@ djangorestframework = "^3.15.2"
 djangorestframework-jsonapi = "^7.0.2"
 djangorestframework-simplejwt = "^5.3.1"
 gunicorn = "^22.0.0"
+mozilla-django-oidc = "^4.0.1"
 psycopg2 = "^2.9.9"
 
 [tool.poetry.group.dev.dependencies]
@@ -32,6 +33,7 @@ pytest-factoryboy = "^2.7.0"
 pytest-freezer = "^0.4.8"
 pytest-mock = "^3.14.0"
 pytest-randomly = "^3.15.0"
+requests-mock = "^1.12.1"
 
 [tool.ruff]
 exclude = [
@@ -106,7 +108,7 @@ filterwarnings = [
     "error::DeprecationWarning",
     "error::PendingDeprecationWarning",
     "ignore:distutils Version classes are deprecated. Use packaging.version instead.:DeprecationWarning",  # issue in pytest-freezer
-
+    "ignore:CSR support in pyOpenSSL is deprecated. You should use the APIs in cryptography.:DeprecationWarning"
 ]
 
 [tool.coverage.run]

@@ -32,7 +32,7 @@ start: build clean ## build and start the project
 
 .PHONY: lint-output ## Lint the built project
 lint-output: build uid
-	@cd ci_project; docker compose exec -T backend /bin/sh -c "poetry run ruff format . && poetry run ruff check ."; cd ..;
+	@cd ci_project; docker compose exec -T backend /bin/sh -c "poetry run ruff format --diff . && poetry run ruff check --diff ."; cd ..;
 
 .PHONY: start
 start: build uid ## start the project
