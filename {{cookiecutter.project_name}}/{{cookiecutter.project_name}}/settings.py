@@ -1,4 +1,3 @@
-import datetime
 import os
 import re
 
@@ -85,8 +84,6 @@ TIME_ZONE = env.str("TIME_ZONE", "UTC")
 USE_I18N = True
 USE_TZ = True
 
-AUTH_USER_MODEL = "{{cookiecutter.django_app}}.User"
-
 REST_FRAMEWORK = {
     "EXCEPTION_HANDLER": "rest_framework_json_api.exceptions.exception_handler",
     "DEFAULT_PAGINATION_CLASS": "rest_framework_json_api.pagination.JsonApiPageNumberPagination",
@@ -102,7 +99,7 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "mozilla_django_oidc.contrib.drf.OIDCAuthentication",
     ),
     "DEFAULT_METADATA_CLASS": "rest_framework_json_api.metadata.JSONAPIMetadata",
     "DEFAULT_FILTER_BACKENDS": (
@@ -123,10 +120,31 @@ JSON_API_FORMAT_FIELD_NAMES = "dasherize"
 JSON_API_FORMAT_TYPES = "dasherize"
 JSON_API_PLURALIZE_TYPES = True
 
-SIMPLE_AUTH = {
-    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(days=2),
-    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=7),
-}
+# Authentication
+OIDC_OP_USER_ENDPOINT = env.str("OIDC_OP_USER_ENDPOINT", default=None)
+OIDC_OP_TOKEN_ENDPOINT = "not supported in {{cookiecutter.project_name}}, but a value is needed"  # noqa: S105
+OIDC_VERIFY_SSL = env.bool("OIDC_VERIFY_SSL", default=True)
+OIDC_ID_CLAIM = env.str("OIDC_ID_CLAIM", default="sub")
+OIDC_EMAIL_CLAIM = env.str("OIDC_EMAIL_CLAIM", default="email")
+OIDC_FIRST_NAME_CLAIM = env.str("OIDC_FIRST_NAME_CLAIM", default="given_name")
+OIDC_LAST_NAME_CLAIM = env.str("OIDC_LAST_NAME_CLAIM", default="family_name")
+OIDC_GROUPS_CLAIM = env.str("OIDC_GROUPS_CLAIM", default="{{cookiecutter.project_name}}_groups")
+OIDC_CLIENT_GRANT_USERNAME_CLAIM = env.str(
+    "OIDC_CLIENT_GRANT_USERNAME_CLAIM",
+    default="preferred_username",
+)
+OIDC_BEARER_TOKEN_REVALIDATION_TIME = env.int(
+    "OIDC_BEARER_TOKEN_REVALIDATION_TIME",
+    default=300,
+)
+OIDC_DRF_AUTH_BACKEND = "{{cookiecutter.project_name}}.{{cookiecutter.django_app}}.authentication.OIDCAuthenticationBackend"
+
+
+# Needed to instantiate `mozilla_django_oidc.auth.OIDCAuthenticationBackend`
+OIDC_RP_CLIENT_ID = None
+OIDC_RP_CLIENT_SECRET = None
+
+ADMIN_GROUP = env.str("ADMIN_GROUP", default="admin")
 
 
 def parse_admins(admins):
@@ -140,8 +158,10 @@ def parse_admins(admins):
     for admin in admins:
         match = re.search(r"(.+) \<(.+@.+)\>", admin)
         if not match:  # pragma: no cover
-            msg = (f'In ADMINS admin "{admin}" is not in correct '
-                   '"Firstname Lastname <email@example.com>" format')
+            msg = (
+                f'In ADMINS admin "{admin}" is not in correct '
+                '"Firstname Lastname <email@example.com>" format'
+            )
             raise environ.ImproperlyConfigured(msg)
         result.append((match.group(1), match.group(2)))
     return result
