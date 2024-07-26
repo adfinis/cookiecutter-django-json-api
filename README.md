@@ -29,7 +29,7 @@ Django specific:
 - [Django REST Framework](http://www.django-rest-framework.org/)
 - [Django REST Framework JSON API](https://github.com/django-json-api/django-rest-framework-json-api)
 - [Django Filter](https://django-filter.readthedocs.org/en/latest/)
-- [Django REST Framework JWT Auth](https://getblimp.github.io/django-rest-framework-jwt/)
+- [mozilla_django_oidc](https://github.com/mozilla/mozilla-django-oidc)
 - [Django Environ](https://github.com/joke2k/django-environ)
 
 
