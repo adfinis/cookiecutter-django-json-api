@@ -65,8 +65,7 @@ class OIDCUser(BaseOIDCUser):
             profile = UserProfile.objects.get(
                 Q(idp_id=self.id) | Q(email__iexact=self.email),
             )
-            # we only want to save if necessary in order to prevent adding historical
-            # records on every request
+            # we only want to save if necessary
             if profile.idp_id != self.id or profile.email != self.email:
                 profile.idp_id = self.id
                 profile.email = self.email
