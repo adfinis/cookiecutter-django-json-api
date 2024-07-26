@@ -24,7 +24,7 @@ WORKDIR $APP_HOME
 
 ARG INSTALL_DEV_DEPENDENCIES=false
 COPY pyproject.toml poetry.lock $APP_HOME/
-RUN if [ "$INSTALL_DEV_DEPENDENCIES" = "true" ]; then poetry install; else poetry install --without dev; fi
+RUN if [ "$INSTALL_DEV_DEPENDENCIES" = "true" ]; then poetry install --with dev; else poetry install; fi
 
 COPY . $APP_HOME
 
