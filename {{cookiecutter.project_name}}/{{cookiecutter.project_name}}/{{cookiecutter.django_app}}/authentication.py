@@ -1,7 +1,6 @@
 import functools
 import hashlib
 import warnings
-from typing import NamedTuple
 
 from django.conf import settings
 from django.core.cache import cache
@@ -14,24 +13,12 @@ from .models import OIDCUser
 
 
 class OIDCAuthenticationBackend(OIDCAuthenticationBackend):
-    class _HistoricalRequestUser(NamedTuple):
-        id: str
-
     def verify_claims(self, claims):
         # claims for human users
         claims_to_verify = [
             settings.OIDC_ID_CLAIM,
             settings.OIDC_EMAIL_CLAIM,
         ]
-
-        # # claims for application clients
-        # if claims.get(settings.OIDC_CLIENT_GRANT_USERNAME_CLAIM) in [
-        #     settings.OIDC_RP_CLIENT_USERNAME,
-        #     settings.OIDC_MONITORING_CLIENT_USERNAME,
-        # ]:
-        #     claims_to_verify = [
-        #         settings.OIDC_ID_CLAIM,
-        #     ]
 
         for claim in claims_to_verify:
             if claim not in claims:
