@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install cookiecutter
+        run: pip install cookiecutter
       - name: Test project
         run: make test
   commit-lint:

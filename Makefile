@@ -20,7 +20,6 @@ clean: ## stop project and remove local build
 
 .PHONY: build
 build: clean ## build the project
-	@pip install -U cookiecutter
 	@cookiecutter --no-input --overwrite-if-exists . project_name=ci_project django_app=api organization_slug=ci-project
 	@echo "UID=$(USER_ID)" > ci_project/.env
 	@cd ci_project; docker compose build --pull; cd ..;
