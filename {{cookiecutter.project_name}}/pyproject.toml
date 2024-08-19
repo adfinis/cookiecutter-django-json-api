@@ -127,7 +127,6 @@ omit = [
     "*/migrations/*",
     "*/apps.py",
     "manage.py",
-    "setup.py",
     "{{cookiecutter.project_name}}/settings_*.py",
     "{{cookiecutter.project_name}}/wsgi.py",
 ]
