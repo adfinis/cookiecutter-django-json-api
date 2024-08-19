@@ -1,5 +1,5 @@
+---
 services:
-
   db:
     image: postgres:alpine
     environment:
@@ -11,7 +11,7 @@ services:
       - dbdata:/var/lib/postgresql/data
 
   backend:
-    image: {{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}
+    image: "{{cookiecutter.organization_slug}}/{{cookiecutter.project_name}}"
     ports:
       - "8000:8000"
     depends_on:
