@@ -16,7 +16,7 @@ djangorestframework = "^3.15.2"
 djangorestframework-jsonapi = "^7.0.2"
 gunicorn = "^22.0.0"
 mozilla-django-oidc = "^4.0.1"
-psycopg2 = "^2.9.9"
+psycopg = {extras = ["binary"], version = "^3.2.1"}
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.3"
@@ -126,7 +126,6 @@ omit = [
     "*/migrations/*",
     "*/apps.py",
     "manage.py",
-    "setup.py",
     "{{cookiecutter.project_name}}/settings_*.py",
     "{{cookiecutter.project_name}}/wsgi.py",
 ]
