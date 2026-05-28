@@ -9,7 +9,7 @@ help:
 
 .PHONY: uid
 uid:
-	@echo "UID=$(USER_ID)" > ci_project/.env
+	echo "UID=$(USER_ID)" > ci_project/.env
 
 .PHONY: clean
 clean: ## stop project and remove local build
@@ -20,14 +20,10 @@ clean: ## stop project and remove local build
 
 .PHONY: build
 build: clean ## build the project
-	@cookiecutter --no-input --overwrite-if-exists . project_name=ci_project django_app=api organization_slug=ci-project
+	cookiecutter --no-input --overwrite-if-exists . project_name=ci_project django_app=api organization_slug=ci-project
 	@echo "UID=$(USER_ID)" > ci_project/.env
 	@cd ci_project; docker compose build --pull; cd ..;
 	@cd ci_project; docker compose run --rm backend poetry run ./manage.py makemigrations; cd ..;
-
-.PHONY: start
-start: build clean ## build and start the project
-	@make -C ci_project start
 
 .PHONY: lint-output ## Lint the built project
 lint-output: build uid
@@ -35,7 +31,7 @@ lint-output: build uid
 
 .PHONY: start
 start: build uid ## start the project
-	@make -C ci_project start
+	make -C ci_project start
 
 .PHONY: test
 test: start lint-output ## test the project
