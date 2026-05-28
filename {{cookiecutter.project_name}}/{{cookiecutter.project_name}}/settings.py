@@ -54,9 +54,7 @@ DATABASES = {
         ),
         "NAME": env.str("DATABASE_NAME", default="{{cookiecutter.project_name}}"),
         "USER": env.str("DATABASE_USER", default="{{cookiecutter.project_name}}"),
-        "PASSWORD": env.str(
-            "DATABASE_PASSWORD", default=default("{{cookiecutter.project_name}}")
-        ),
+        "PASSWORD": env.str("DATABASE_PASSWORD", default=default("{{cookiecutter.project_name}}")),
         "HOST": env.str("DATABASE_HOST", default="localhost"),
         "PORT": env.str("DATABASE_PORT", default=""),
         "OPTIONS": env.dict("DATABASE_OPTIONS", default={}),
