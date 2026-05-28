@@ -5,7 +5,8 @@ description = "{{cookiecutter.description}}"
 repository = "{{cookiecutter.url}}"
 authors = ["{{cookiecutter.organization_slug}}"]
 license = "GPL-3.0-or-later"
-readme = "../README.md"
+readme = "./README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
